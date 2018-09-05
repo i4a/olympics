@@ -1,0 +1,13 @@
+name: olympics
+dependencies:
+  - python>=3.6
+  - numpy
+  - matplotlib
+  - pandas
+  - scikit-learn
+  - seaborn
+  - mpld3
+  - cython
+  - pip
+  - pip:
+    - jupyter

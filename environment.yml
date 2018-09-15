@@ -12,3 +12,4 @@ dependencies:
   - pip:
     - jupyter
     - nbdime
+    - xlwt

@@ -102,3 +102,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+data/athletes_cleaned_merged.csv

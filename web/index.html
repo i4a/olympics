@@ -156,12 +156,15 @@
           <div class="col-md-10 col-lg-8 mx-auto text-center">
 
             <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-            <h2 class="text-white mb-5">Enter values to get Your Sport Recommendation!</h2>
-
-            <form class="form-inline d-flex">
-              <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter Weight ex.. 144">
-              <input type="text" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="Enter Height ex.. 5`8`">
-              <button type="submit" class="btn btn-primary mx-auto">Get Sport</button>
+            <h2 class="text-white mb-5">Get Your Sport Recommendation!</h2>
+            <form  style="margin:0 auto;width:175px;" class="form-inline-block d-flex">
+             <fieldset>
+                <select name="sex" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0"><option value="male">Male</option>   <option value="female">Female</option></select><br>
+                <input type="number" placeholder="Age" name="age" min="10" max="90" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0"><br>
+                <input type="number" name="weight" min="50" max="400" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" placeholder="Weight ex.. 145"><br>
+                <input type="text" name="height"  class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" placeholder="Height ex.. 5` 8`"><br>
+                <button type="submit" class="btn btn-primary mx-auto"> Get Sport</button>
+             </fieldset>
             </form>
 
           </div>

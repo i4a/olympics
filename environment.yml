@@ -8,6 +8,7 @@ dependencies:
   - seaborn
   - mpld3
   - cython
+  - flask
   - pip
   - pip:
     - jupyter

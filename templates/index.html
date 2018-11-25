@@ -157,12 +157,13 @@
 
             <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
             <h2 class="text-white mb-5">Get Your Sport Recommendation!</h2>
-            <form  style="margin:0 auto;width:175px;" class="form-inline-block d-flex">
+            <form  style="margin:0 auto;width:175px;" class="form-inline-block d-flex" action="/sport" method="post">
              <fieldset>
                 <select name="sex" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0"><option value="male">Male</option>   <option value="female">Female</option></select><br>
+                <select name="olympic_game" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0"><option value="male">Summer</option>   <option value="female">Winter</option></select><br>
                 <input type="number" placeholder="Age" name="age" min="10" max="90" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0"><br>
-                <input type="number" name="weight" min="50" max="400" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" placeholder="Weight ex.. 145"><br>
-                <input type="text" name="height"  class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" placeholder="Height ex.. 5` 8`"><br>
+                <input type="number" name="weight" min="50" max="400" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" placeholder="Weight lbs.. 145"><br>
+                <input type="number" name="height"  min="100"  max="220" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" placeholder="Height cm 172.72"`"><br>
                 <button type="submit" class="btn btn-primary mx-auto"> Get Sport</button>
              </fieldset>
             </form>

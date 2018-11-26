@@ -10,6 +10,7 @@ dependencies:
   - cython
   - flask
   - pip
+  - gunicorn
   - pip:
     - jupyter
     - nbdime

@@ -104,7 +104,7 @@ def sport():
         normalized_Sex0= 1.08565613
         normalized_Sex1= -1.08565613
 
-    if Sex=="Summer":
+    if Season=="Summer":
         normalized_Season0= -0.61742649
         normalized_Season1=  0.61742649
     else:

@@ -61,9 +61,66 @@ def index():
 def sport():
     # Params for model are in here!
     args = request.args.to_dict()
-    print(args)
+    #print(args)
+    
+    import numpy as np
+    from sklearn.externals import joblib
+
+    #replace these with our input parameters
+    Age = args.Age
+    Height = args.Height
+    Weight = args.Weight
+    Sex= args.Sex
+    Season = args.Season
+
+    BMI = Weight/((Height/100)*(Height/100))
+
+    Age_mean = 26.11
+    Age_std = 5.487983 
+
+    Height_mean = 175.853000
+    Height_std = 10.858561
+
+    Weight_mean = 71.470500
+    Weight_std = 15.815916
+
+    BMI_mean = 22.890782 
+    BMI_std = 3.288332 
+
+    normalized_Age = (Age - Age_mean)/Age_std
+    normalized_Height = (Height - Height_mean)/Height_std
+    normalized_Weight = (Weight - Weight_mean)/Weight_std
+    normalized_BMI = (BMI - BMI_mean)/BMI_std
+
+    if Sex=="Male":
+        normalized_Sex0= -0.92110197
+        normalized_Sex1=  0.92110197
+    else:
+        normalized_Sex0= 1.08565613
+        normalized_Sex1= -1.08565613
+
+    if Sex=="Summer":
+        normalized_Season0= -0.61742649
+        normalized_Season1=  0.61742649
+    else:
+        normalized_Season0= 1.61962601
+        normalized_Season1= -1.61962601
+
+    # Make the array
+    #Year of 0 fir the mean year
+    #hard-code US population proportion of 0.69322825 which is the normalized value for US
+    #hard-code COUNTRY-USA as 4.01173492 which is the normalized value for US
+    my_array = np.array([normalized_Age,  normalized_Height,  normalized_Weight, 0,  normalized_BMI, 0.69322825,
+    4.01173492,  normalized_Season0, normalized_Season1, normalized_Sex0,  normalized_Sex1])
+
+    rf_jl = joblib.load("rf_finalized.joblib")
+    le_jl = joblib.load("le.joblib")
+
+    sport = rf_jl.predict(my_array.reshape(-1, 11))
+    sport_name=le_jl.inverse_transform(sport[0])
+
     #Can just pass the name of the sport to get image and sport name.
-    sport, image = fetch_template_params_for("default")
+    sport, image = fetch_template_params_for(sport_name)
     return render_template('sport.html', sport=sport, user_image=image)
 
 if __name__ == '__main__':

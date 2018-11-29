@@ -26,6 +26,7 @@ def get_image_data():
     #mac
     #user_images = [i.replace('static/img/', "") for i in glob.glob('static/img/*.png')]
     #pc
+    #user_images = [i.replace('static\\img\\', "") for i in glob.glob('static\\img\\*.png')]
     user_images = [i.replace('static\\img\\', "") for i in glob.glob('static\\img\\*.png')]
     sports = [inflection.titleize(i.replace('.png', "").capitalize().replace("_", " ")) + "!" for i in user_images]
     data = list(zip(sports, user_images))
@@ -48,7 +49,7 @@ def fetch_template_params_for(sport_name="aeronautics"):
     data = get_image_data()
     print (data)
     print (sport_name)
-    
+
     postfix = '.png'
     try:
         item = list(filter(lambda x: sport_name + postfix in x, data))[0]
@@ -67,7 +68,7 @@ def index():
 def sport():
     # Params for model are in here!
     args = request.args.to_dict()
-    
+
     import numpy as np
     from sklearn.externals import joblib
 
@@ -81,7 +82,7 @@ def sport():
     BMI = Weight/((Height/100)*(Height/100))
 
     Age_mean = 26.11
-    Age_std = 5.487983 
+    Age_std = 5.487983
 
     Height_mean = 175.853000
     Height_std = 10.858561
@@ -89,8 +90,8 @@ def sport():
     Weight_mean = 71.470500
     Weight_std = 15.815916
 
-    BMI_mean = 22.890782 
-    BMI_std = 3.288332 
+    BMI_mean = 22.890782
+    BMI_std = 3.288332
 
     normalized_Age = (Age - Age_mean)/Age_std
     normalized_Height = (Height - Height_mean)/Height_std
@@ -124,10 +125,10 @@ def sport():
     sport_code = rf_jl.predict(my_array.reshape(-1, 11))
     sport_name=le_jl.inverse_transform(sport_code[0])
     sport_name=sport_name.lower()
-    
+
     #Can just pass the name of the sport to get image and sport name.
     sport, image = fetch_template_params_for(sport_name)
-    
+
     return render_template('sport.html', sport=sport, user_image=image)
 
 if __name__ == '__main__':

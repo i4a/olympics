@@ -23,7 +23,10 @@ def get_image_data():
     Returns:
     <list> [(sport, user_image)...]
     """
-    user_images = [i.replace('static/img/', "") for i in glob.glob('static/img/*.png')]
+    #mac
+    #user_images = [i.replace('static/img/', "") for i in glob.glob('static/img/*.png')]
+    #pc
+    user_images = [i.replace('static\\img\\', "") for i in glob.glob('static\\img\\*.png')]
     sports = [inflection.titleize(i.replace('.png', "").capitalize().replace("_", " ")) + "!" for i in user_images]
     data = list(zip(sports, user_images))
     return data
@@ -43,6 +46,9 @@ def fetch_template_params_for(sport_name="aeronautics"):
     <tuple> (sport, user_image)
     """
     data = get_image_data()
+    print (data)
+    print (sport_name)
+    
     postfix = '.png'
     try:
         item = list(filter(lambda x: sport_name + postfix in x, data))[0]
@@ -61,17 +67,16 @@ def index():
 def sport():
     # Params for model are in here!
     args = request.args.to_dict()
-    #print(args)
     
     import numpy as np
     from sklearn.externals import joblib
 
     #replace these with our input parameters
-    Age = args.Age
-    Height = args.Height
-    Weight = args.Weight
-    Sex= args.Sex
-    Season = args.Season
+    Age = float(args['age'])
+    Height = float(args['height'])
+    Weight = float(args['weight'])
+    Sex= args['sex']
+    Season = args['olympic_game']
 
     BMI = Weight/((Height/100)*(Height/100))
 
@@ -116,11 +121,13 @@ def sport():
     rf_jl = joblib.load("rf_finalized.joblib")
     le_jl = joblib.load("le.joblib")
 
-    sport = rf_jl.predict(my_array.reshape(-1, 11))
-    sport_name=le_jl.inverse_transform(sport[0])
-
+    sport_code = rf_jl.predict(my_array.reshape(-1, 11))
+    sport_name=le_jl.inverse_transform(sport_code[0])
+    sport_name=sport_name.lower()
+    
     #Can just pass the name of the sport to get image and sport name.
     sport, image = fetch_template_params_for(sport_name)
+    
     return render_template('sport.html', sport=sport, user_image=image)
 
 if __name__ == '__main__':

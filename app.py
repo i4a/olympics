@@ -98,14 +98,14 @@ def sport():
     normalized_Weight = (Weight - Weight_mean)/Weight_std
     normalized_BMI = (BMI - BMI_mean)/BMI_std
 
-    if Sex=="Male":
+    if (Sex=="Male") or (Sex=="male") :
         normalized_Sex0= -0.92110197
         normalized_Sex1=  0.92110197
     else:
         normalized_Sex0= 1.08565613
         normalized_Sex1= -1.08565613
 
-    if Season=="Summer":
+    if (Season=="Summer") or (Sex=="summer"):
         normalized_Season0= -0.61742649
         normalized_Season1=  0.61742649
     else:

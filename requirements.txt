@@ -2,7 +2,6 @@ click==7.0
 cython==0.29
 flask==1.0.2
 gunicorn==19.9.0
-intel-openmp==2019.1
 jinja2==2.10
 libcxx==4.0.1
 libcxxabi==4.0.1

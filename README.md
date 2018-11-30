@@ -61,7 +61,14 @@ conda env update -f environment.yml
 This `olympics` environment includes `jupyter notebook` as well as many of the other
 packages we need in order to run the analysis on this project.
 
+### Using The Application
 
+Our group has developed a proof of concept which includes an Olympic sport recommendation engine.
+Our system takes in a few factors from the user and gives the user an olympic sport
+that might be best suitable for them. Our models prediction is based on over 200 years
+worth of olympic athletic data. See which sport best fits you!
+
+[Olympic Sport Recommender POC](https://olympics-msds-7331.herokuapp.com/)
 
 ## Group Members
 

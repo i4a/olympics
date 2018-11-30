@@ -105,7 +105,7 @@ def sport():
         normalized_Sex0= 1.08565613
         normalized_Sex1= -1.08565613
 
-    if (Season=="Summer") or (Sex=="summer"):
+    if (Season=="Summer") or (Season=="summer"):
         normalized_Season0= -0.61742649
         normalized_Season1=  0.61742649
     else:
@@ -124,7 +124,7 @@ def sport():
 
     sport_code = rf_jl.predict(my_array.reshape(-1, 11))
     sport_name=le_jl.inverse_transform(sport_code[0])
-    sport_name=sport_name.lower()
+    sport_name=sport_name.lower().replace(" ", "_")
 
     #Can just pass the name of the sport to get image and sport name.
     sport, image = fetch_template_params_for(sport_name)

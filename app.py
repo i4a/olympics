@@ -27,7 +27,7 @@ def get_image_data():
     #user_images = [i.replace('static/img/', "") for i in glob.glob('static/img/*.png')]
     #pc
     #user_images = [i.replace('static\\img\\', "") for i in glob.glob('static\\img\\*.png')]
-    user_images = [i.replace('static\\img\\', "") for i in glob.glob('static\\img\\*.png')]
+    user_images = [i.replace('static/img/', "") for i in glob.glob('static/img/*.png')]
     sports = [inflection.titleize(i.replace('.png', "").capitalize().replace("_", " ")) + "!" for i in user_images]
     data = list(zip(sports, user_images))
     return data
@@ -47,9 +47,6 @@ def fetch_template_params_for(sport_name="aeronautics"):
     <tuple> (sport, user_image)
     """
     data = get_image_data()
-    print (data)
-    print (sport_name)
-
     postfix = '.png'
     try:
         item = list(filter(lambda x: sport_name + postfix in x, data))[0]
@@ -98,14 +95,14 @@ def sport():
     normalized_Weight = (Weight - Weight_mean)/Weight_std
     normalized_BMI = (BMI - BMI_mean)/BMI_std
 
-    if (Sex=="Male") or (Sex=="male") :
+    if Sex=="male":
         normalized_Sex0= -0.92110197
         normalized_Sex1=  0.92110197
     else:
         normalized_Sex0= 1.08565613
         normalized_Sex1= -1.08565613
 
-    if (Season=="Summer") or (Season=="summer"):
+    if Sex=="summer":
         normalized_Season0= -0.61742649
         normalized_Season1=  0.61742649
     else:

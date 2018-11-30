@@ -113,7 +113,7 @@ def sport():
         normalized_Season1= -1.61962601
 
     # Make the array
-    #Year of 0 fir the mean year
+    #Year of 0 for the mean year
     #hard-code US population proportion of 0.69322825 which is the normalized value for US
     #hard-code COUNTRY-USA as 4.01173492 which is the normalized value for US
     my_array = np.array([normalized_Age,  normalized_Height,  normalized_Weight, 0,  normalized_BMI, 0.69322825,
